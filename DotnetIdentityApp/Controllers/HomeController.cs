@@ -9,6 +9,7 @@ namespace DotnetIdentityApp.Controllers
             return View();
         }
         [HttpPost]
+        [Route("Home/TitleAccessUpdate")]
         public JsonResult TitleAccessUpdate(int? Id)
         {
             return Json($"Access Id {Id} has been updated!");
