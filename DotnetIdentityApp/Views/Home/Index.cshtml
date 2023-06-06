@@ -1,0 +1,36 @@
+﻿<strong><span id="appendHere"></span></strong></>
+<hr />
+
+<input id="accessId" />
+<button type="button" name="submitButton" value="Edit" class="btn btn-primary"
+        onclick="GetAjaxResponse()">
+    Submit Request
+</button>
+
+
+
+@section scripts {
+    <script>
+        function GetAjaxResponse() {
+
+            var idToUpdate = document.getElementById("accessId").value;
+            console.log(idToUpdate);
+
+            var localUrl = "https://localhost:7251/Home/TitleAccessUpdate";
+            var publishUrl = "https://webapidebug.azurewebsites.net/Home/TitleAccessUpdate";
+
+            $.ajax({
+                type: "POST",
+                url: publishUrl,
+                data: "Id=" + idToUpdate,
+                dataType: "json",
+                success: function (data) {
+                    $("#appendHere").html(data);
+                },
+                error: function (xhr, status, error) {
+                    alert('Data was not sent to backend!');
+                }
+            });
+        }
+    </script>
+}
